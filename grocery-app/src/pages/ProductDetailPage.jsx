@@ -4,7 +4,7 @@ import Navbar from "../components/Navbar";
 import { useParams } from "react-router-dom";
 
 const ProductDetailPage = () => {
-    const id = useParams();
+    let {id} = useParams();
     const [product, setProduct] = useState({});
 
     const fetchData = () => {
