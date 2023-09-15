@@ -4,6 +4,7 @@ import HomePage from "./pages/HomePage";
 import ProductDetailPage from "./pages/ProductDetailPage";
 import ProductPage from "./pages/ProductPage";
 import {BrowserRouter, Routes,Route} from 'react-router-dom';
+import ErrorPage from "./pages/ErrorPage";
 
 
 function App() {
@@ -16,7 +17,7 @@ function App() {
         <Route path="/products/detail/:id" element={ <ProductDetailPage /> } />
         <Route path="/about" element={<AboutPage /> } />
         <Route path="/contact" element={<ContactPage />} /> 
-        {/* <Route path="*" element={ <ErrorPage /> } /> */}
+        <Route path="*" element={ <ErrorPage /> } />
       </Routes>
     </BrowserRouter>
   
