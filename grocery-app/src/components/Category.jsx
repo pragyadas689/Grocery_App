@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const Category = (props) => {
   const { catName, catId, catImage } = props.data;
   return (
@@ -7,9 +9,9 @@ const Category = (props) => {
         <div class="card-body">
           <h5 class="card-title">{catName}</h5>
          
-          <a href="#" class="btn btn-primary btn-block">
+          <Link to={'/products/'+catId} class="btn btn-primary btn-block">
            Select
-          </a>
+          </Link>
         </div>
       </div>
     </div>

@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios, { Axios } from "axios";
+import {useParams} from 'react-router-dom';
 
 const SubCategory = () => {
-  const [catId, setCatId] = useState(3);
+   
+  const {catId} = useParams();
   const [SubCategories, setSubCategories] = useState([]);
 
   const fetchData = () => {

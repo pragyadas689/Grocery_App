@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Navbar from "../components/Navbar";
+import { useParams } from "react-router-dom";
 
 const ProductDetailPage = () => {
-    const id = "5ea1fe7cf7909e0017b050bd";
+    const id = useParams();
     const [product, setProduct] = useState({});
 
     const fetchData = () => {

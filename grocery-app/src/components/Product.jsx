@@ -1,5 +1,7 @@
+import { Link } from "react-router-dom";
+
 const Product = (props) => {
-    const { productName, image, unit, price, mrp } = props.data;
+    const { productName, image, unit, price, mrp ,_id} = props.data;
     return (
         <div class="col-sm-4">
             <div class="card">
@@ -19,7 +21,7 @@ const Product = (props) => {
                             <del><span>&#8377;</span>{mrp}</del>
                         </span>
                     </h2>
-                    <a href="#" class="btn btn-primary btn-block">Show Detail</a>
+                    <Link to={'/products/detail/'+_id} class="btn btn-primary btn-block">Show Detail</Link>
                 </div>
             </div>
         </div>
