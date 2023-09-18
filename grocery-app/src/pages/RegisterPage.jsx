@@ -2,8 +2,15 @@ import React , {useState} from "react";
 import { Link } from "react-router-dom";
 import {useFormik} from 'formik';
 import * as Yup from 'yup';
+import axios from "axios";
 
 const RegisterPage = ()=>{
+
+    const [requestResponse, setRequestResponse] = useState({
+        textMessage: '',
+        alertClass: ''
+    })
+
 
     const initialValues = {
         firstName : '',
@@ -12,7 +19,19 @@ const RegisterPage = ()=>{
         password : ''
     }
 const onSubmit = (values)=>{
-   console.log(values);
+    axios.post('https://orca-app-jhg4l.ondigitalocean.app/api/auth/register', values)
+            .then((response) => {
+                setRequestResponse({
+                    textMessage: response.data.message,
+                    alertClass: 'alert alert-success'
+                })
+            }, (error) => {
+                setRequestResponse({
+                    textMessage: error.response.data.message,
+                    alertClass: 'alert alert-danger'
+                })
+            })
+            .catch((error) => console.log(error))
 }
 // const validate = (values) =>{
 //     let errors = {};
@@ -70,6 +89,9 @@ const formik = useFormik({
             <div className="col-md-6">
              <div className="wrapper">
               {/* <h1>{formik.values.firstName}</h1> */}
+              <div class={requestResponse.alertClass} role="alert">
+                            {requestResponse.textMessage}
+                        </div>
               <h2>Register</h2>
               <hr />
               <form onSubmit={formik.handleSubmit}>
@@ -136,7 +158,7 @@ const formik = useFormik({
               </form>
               <br />
               <p className="text-center">
-                Already Register ? <Link>Click Here</Link>
+                Already Register ? <Link to="/login">Click Here</Link>
               </p>
              </div>
             </div>
